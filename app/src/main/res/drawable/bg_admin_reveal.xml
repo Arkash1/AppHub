@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Карточка «Режим администратора» — появляется снизу после 5 тапов. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="45"
+                android:startColor="#557C4DFF"
+                android:endColor="#5500E5FF" />
+            <corners android:radius="20dp" />
+        </shape>
+    </item>
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_surface_elevated" />
+            <corners android:radius="18dp" />
+        </shape>
+    </item>
+</layer-list>

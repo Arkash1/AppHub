@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Кастомная кнопка действия: capsule-кнопка (вкл/выкл) + прогресс-бар с процентом + кнопка «Отмена».
+  ActionButton расширяет FrameLayout, поэтому слои накладываются. Для компактности
+  используется FrameLayout с двумя дочерними группами.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clipChildren="false">
+
+    <!-- Группа 1: capsule-кнопка -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/action_button"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/btn_neon"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:stateListAnimator="@null"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" />
+
+    <!-- Группа 2: горизонтальный прогресс + отмена -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/action_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_gravity="center"
+                android:progress="0"
+                android:max="100"
+                android:progressTint="@color/primary_neon"
+                android:progressBackgroundTint="@color/bg_surface_elevated"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/action_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/text_primary"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/action_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:text="@string/btn_cancel"
+            android:textColor="@color/accent_pink"
+            android:textSize="13sp"
+            android:textAllCaps="false"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</FrameLayout>

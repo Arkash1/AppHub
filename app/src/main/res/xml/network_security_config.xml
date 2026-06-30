@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Конфигурация сетевой безопасности.
+  Разрешаем plain HTTP (cleartext), т.к. локальный сервер в домашней сети
+  работает по HTTP (без TLS). TLS нужен только для внешнего доступа через
+  Cloudflare Tunnel (там HTTPS терминируется на стороне Cloudflare).
+-->
+<network-security-config>
+    <!-- Разрешаем plain HTTP для всех доменов (dev/локальная разработка). -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>

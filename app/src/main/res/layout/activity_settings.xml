@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:stateListAnimator="@null"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/settings_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="@string/settings_title"
+            app:titleTextColor="@color/text_primary" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="80dp">
+
+            <!-- ===== Подключение ===== -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_connection"
+                android:textColor="@color/accent_cyan"
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.08"
+                android:layout_marginTop="8dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AppHub.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/server_url"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/settings_server_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textIsSelectable="true" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settings_set_url"
+                        style="@style/Widget.AppHub.Button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/set_server_url" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settings_reset_url"
+                        style="Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/reset_server_url"
+                        android:textColor="@color/accent_cyan"
+                        app:strokeColor="@color/accent_cyan"
+                        app:cornerRadius="22dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Каталог ===== -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_catalog"
+                android:textColor="@color/accent_cyan"
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.08"
+                android:layout_marginTop="20dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AppHub.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/settings_check_updates"
+                    style="@style/Widget.AppHub.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="@string/check_updates" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Пасхалка: режим администратора ===== -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/settings_admin_reveal"
+                    style="@style/Widget.AppHub.CardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:strokeColor="@color/transparent"
+                    app:cardCornerRadius="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_admin_reveal"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/admin_mode"
+                            android:textColor="@color/accent_cyan"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.05" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/settings_admin_enter"
+                            style="@style/Widget.AppHub.Button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/admin_enter" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/settings_admin_logout"
+                            style="Widget.Material3.Button.TextButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/admin_logout"
+                            android:textColor="@color/accent_pink"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </FrameLayout>
+
+            <!-- ===== О приложении ===== -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_about"
+                android:textColor="@color/accent_cyan"
+                android:textSize="13sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.08"
+                android:layout_marginTop="20dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AppHub.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/settings_app_version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/settings_developed_by"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/developed_by"
+                        style="@style/AppHubDevelopedBy" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Отступы -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">12dp</dimen>
+    <dimen name="spacing_lg">16dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
+    <dimen name="spacing_xxl">32dp</dimen>
+
+    <!-- Карточки -->
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="card_padding">14dp</dimen>
+    <dimen name="icon_app">56dp</dimen>
+    <dimen name="icon_app_radius">14dp</dimen>
+
+    <!-- Кнопки -->
+    <dimen name="button_height">44dp</dimen>
+    <dimen name="button_radius">22dp</dimen>
+
+    <!-- Текст -->
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_subtitle">16sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_headline">24sp</dimen>
+</resources>

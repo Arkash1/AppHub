@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Кэш каталога можно не бэкапить (он скачается заново). -->
+    <exclude domain="database" path="apphub.db" />
+    <exclude domain="cache" path="downloads/" />
+</full-backup-content>

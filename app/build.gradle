@@ -1,0 +1,107 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.arkashstudio.apphub'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.arkashstudio.apphub"
+        // Android 10+ по требованию
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables { useSupportLibrary true }
+
+        // Дефолтный адрес сервера — вшивается в BuildConfig.
+        // ЗАМЕНИТЕ на свой домен Cloudflare Tunnel перед сборкой релиза.
+        buildConfigField "String", "DEFAULT_SERVER_URL", '"https://apphub.example.ru"'
+        // Версия клиента для отображения в настройках
+        buildConfigField "String", "APP_VERSION", "\"1.0.0\""
+    }
+
+    buildTypes {
+        debug {
+            // IP компьютера в локальной Wi-Fi сети — приложение сразу подключается к серверу
+            buildConfigField "String", "DEFAULT_SERVER_URL", '"http://192.168.0.122:8080"'
+            minifyEnabled false
+        }
+        release {
+            // Замените домен выше на свой прод-домен перед сборкой релиза
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug   // для квалификационной работы; для store нужен release keystore
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*']
+        }
+    }
+}
+
+dependencies {
+    // AndroidX core (только Java-артефакты, без Kotlin)
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.activity:activity:1.8.2'
+    implementation 'androidx.fragment:fragment:1.6.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.preference:preference:1.2.1'
+
+    // Material Components
+    implementation 'com.google.android.material:material:1.11.0'
+
+    // Lifecycle / ViewModel / LiveData
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.7.0'
+    implementation 'androidx.lifecycle:lifecycle-process:2.7.0'
+
+    // Room
+    implementation 'androidx.room:room-runtime:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+
+    // DataStore не нужен — настройки хранятся в SharedPreferences (см. SettingsRepository).
+    // Это упрощает Java-код и убирает зависимости от RxJava/Kotlin Coroutines.
+
+    // Security (EncryptedSharedPreferences для админ-пароля)
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+
+    // Retrofit + OkHttp + Gson-конвертер
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+
+    // Glide (загрузка изображений)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
+    // WorkManager (фоновая проверка обновлений)
+    implementation 'androidx.work:work-runtime:2.9.0'
+
+    // Тесты
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

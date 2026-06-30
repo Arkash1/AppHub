@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Карточка приложения в каталоге. Используется AppCardView. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_neon_card"
+    android:padding="@dimen/card_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/card_icon"
+            android:layout_width="@dimen/icon_app"
+            android:layout_height="@dimen/icon_app"
+            android:scaleType="centerCrop"
+            android:background="@drawable/placeholder_app_icon"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Nebula Player" xmlns:tools="http://schemas.android.com/tools" />
+
+            <TextView
+                android:id="@+id/card_developer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Arkash's Studio" xmlns:tools="http://schemas.android.com/tools" />
+
+            <RatingBar
+                android:id="@+id/card_rating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:numStars="5"
+                android:rating="4.5"
+                android:stepSize="0.1"
+                android:isIndicator="true"
+                android:progressTint="@color/warning_amber"
+                android:secondaryProgressTint="@color/warning_amber" />
+
+            <TextView
+                android:id="@+id/card_meta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="1.4.2  •  12.3 МБ" xmlns:tools="http://schemas.android.com/tools" />
+        </LinearLayout>
+
+        <com.arkashstudio.apphub.ui.common.ActionButton
+            android:id="@+id/card_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/card_short_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        tools:text="Минималистичный аудиоплеер с неоновым интерфейсом" xmlns:tools="http://schemas.android.com/tools" />
+
+</LinearLayout>

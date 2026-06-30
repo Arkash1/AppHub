@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Плейсхолдер иконки приложения: градиент с белой буквой A в центре. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="45"
+                android:startColor="@color/primary_neon"
+                android:endColor="@color/accent_cyan" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+</layer-list>
