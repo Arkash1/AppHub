@@ -24,6 +24,7 @@ public final class EntityMapper {
         e.iconUrl = dto.iconUrl;
         e.rating = dto.rating;
         e.featured = dto.featured;
+        e.downloadsCount = dto.downloadsCount;
         e.latestVersionId = dto.latestVersionId;
         e.latestVersionName = dto.latestVersionName;
         e.latestVersionCode = dto.latestVersionCode;

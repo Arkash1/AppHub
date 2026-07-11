@@ -70,19 +70,37 @@ public class CatalogActivity extends AppCompatActivity {
 
     private void setupTabs() {
         tabs = findViewById(R.id.catalog_tabs);
-        // Вкладка «Все» по умолчанию.
+        // Вкладка «Мои» (позиция 0) — установленные через AppHub приложения.
+        tabs.addTab(tabs.newTab().setText(R.string.cat_mine));
+        // Вкладка «Все» (позиция 1) — весь каталог.
         tabs.addTab(tabs.newTab().setText(R.string.cat_all));
+
         tabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                String cat = tab.getPosition() == 0 ? null : tab.getText().toString();
-                vm.setCategory(cat);
+                int pos = tab.getPosition();
+                if (pos == 0) {
+                    // «Мои приложения»
+                    vm.setShowMine(true);
+                } else if (pos == 1) {
+                    // «Все»
+                    vm.setShowMine(false);
+                    vm.setCategory(null);
+                } else {
+                    // Категории (позиции 2+)
+                    vm.setShowMine(false);
+                    vm.setCategory(tab.getText().toString());
+                }
             }
             @Override
             public void onTabUnselected(TabLayout.Tab tab) { }
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }
         });
+
+        // Выбрать «Все» по умолчанию (позиция 1).
+        tabs.getTabAt(1).select();
+        vm.setShowMine(false);
 
         // Подгрузить категории с сервера в фоне.
         new Thread(() -> {
@@ -147,6 +165,9 @@ public class CatalogActivity extends AppCompatActivity {
     private void setupFabs() {
         View settingsFab = findViewById(R.id.catalog_fab_settings);
         settingsFab.setOnClickListener(v -> startActivity(new Intent(this, SettingsActivity.class)));
+
+        View searchFab = findViewById(R.id.catalog_fab_search);
+        searchFab.setOnClickListener(v -> startActivity(new Intent(this, com.arkashstudio.apphub.ui.search.SearchActivity.class)));
     }
 
     private void openDetail(long appId) {

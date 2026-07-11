@@ -16,7 +16,7 @@ import com.arkashstudio.apphub.data.local.entity.AppEntity;
  */
 @Database(
         entities = {AppEntity.class},
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {

@@ -46,6 +46,9 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.detail_toolbar);
+        setSupportActionBar(toolbar);
+
         vm = new ViewModelProvider(this).get(DetailViewModel.class);
         downloadRepo = DownloadRepository.get(this);
 
@@ -56,6 +59,39 @@ public class DetailActivity extends AppCompatActivity {
 
         setupObservers();
         vm.load(appId);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem item) {
+        if (item.getItemId() == R.id.action_share) {
+            shareCurrentApp();
+            return true;
+        }
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void shareCurrentApp() {
+        com.arkashstudio.apphub.data.remote.dto.AppDetailDto app = vm.app().getValue();
+        if (app == null) return;
+        String title = app.title != null ? app.title : "";
+        String dev = app.developer != null ? app.developer : "";
+        String text = getString(R.string.share_app_text, title, dev);
+
+        android.content.Intent share = new android.content.Intent(android.content.Intent.ACTION_SEND);
+        share.setType("text/plain");
+        share.putExtra(android.content.Intent.EXTRA_SUBJECT, title);
+        share.putExtra(android.content.Intent.EXTRA_TEXT, text);
+        startActivity(android.content.Intent.createChooser(share, getString(R.string.share_app)));
     }
 
     private void setupObservers() {
@@ -123,6 +159,7 @@ public class DetailActivity extends AppCompatActivity {
         addInfoRow(info, "Версия", v.versionName);
         addInfoRow(info, "Размер", FileUtil.formatSize(v.fileSize));
         if (v.minSdk != null) addInfoRow(info, "Мин. Android", "API " + v.minSdk);
+        addInfoRow(info, "Загрузок", formatCount(app.downloadsCount));
         if (app.packageName != null) addInfoRow(info, "Пакет", app.packageName);
     }
 
@@ -131,6 +168,13 @@ public class DetailActivity extends AppCompatActivity {
         ((TextView) row.findViewById(R.id.info_key)).setText(key);
         ((TextView) row.findViewById(R.id.info_value)).setText(value);
         parent.addView(row);
+    }
+
+    /** Форматирование счётчика: 1234 → "1.2K", 1 500 000 → "1.5M". */
+    private String formatCount(long count) {
+        if (count < 1000) return String.valueOf(count);
+        if (count < 1_000_000) return String.format(java.util.Locale.US, "%.1fK", count / 1000.0);
+        return String.format(java.util.Locale.US, "%.1fM", count / 1_000_000.0);
     }
 
     private void bindScreenshots(AppDetailDto app) {

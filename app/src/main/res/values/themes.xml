@@ -38,6 +38,14 @@
         <item name="textInputStyle">@style/Widget.AppHub.TextInputLayout</item>
     </style>
 
+    <!-- Splash screen theme — отображается до того, как приложение прогрузится. -->
+    <style name="Theme.AppHub.Splash" parent="Theme.AppHub">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/bg_base</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
     <!-- Тема диалогов -->
     <style name="DialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorPrimary">@color/primary_neon</item>
@@ -73,8 +81,8 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <!-- Заголовок логотипа (имя БЕЗ префикса "TextAppearance." — иначе AAPT ищет
-         несуществующий базовый стиль TextAppearance). -->
+    <!-- Заголовок логотипа (имя без точки в середине — иначе AAPT ищет
+         несуществующий родительский стиль TextAppearance.AppHub). -->
     <style name="AppHubLogo" parent="TextAppearance.Material3.HeadlineSmall">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">22sp</item>

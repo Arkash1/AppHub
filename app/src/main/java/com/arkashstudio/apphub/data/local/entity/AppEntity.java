@@ -20,6 +20,7 @@ public class AppEntity {
     public String iconUrl;
     public double rating;
     public boolean featured;
+    public long downloadsCount;
 
     public Long latestVersionId;
     public String latestVersionName;

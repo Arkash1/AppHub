@@ -17,6 +17,7 @@ public class AppDetailDto {
     @SerializedName("bannerUrl") public String bannerUrl;
     @SerializedName("rating") public double rating;
     @SerializedName("featured") public boolean featured;
+    @SerializedName("downloadsCount") public long downloadsCount;
 
     @SerializedName("versions") public List<VersionDto> versions;
     @SerializedName("screenshots") public List<ScreenshotDto> screenshots;

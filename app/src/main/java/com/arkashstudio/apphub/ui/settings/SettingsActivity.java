@@ -119,6 +119,37 @@ public class SettingsActivity extends AppCompatActivity {
                 });
             }).start();
         });
+
+        // Очистка кэша загрузок.
+        TextView cacheSizeView = findViewById(R.id.settings_cache_size);
+        View clearCacheBtn = findViewById(R.id.settings_clear_cache);
+        refreshCacheSize(cacheSizeView);
+        clearCacheBtn.setOnClickListener(v -> {
+            new AlertDialog.Builder(this, R.style.DialogTheme)
+                    .setTitle(R.string.clear_cache)
+                    .setMessage(R.string.clear_cache_confirm)
+                    .setPositiveButton(R.string.yes, (d, w) -> {
+                        new Thread(() -> {
+                            com.arkashstudio.apphub.util.FileUtil.clearDownloadsDir(this);
+                            runOnUiThread(() -> {
+                                refreshCacheSize(cacheSizeView);
+                                Toast.makeText(this, R.string.cache_cleared, Toast.LENGTH_SHORT).show();
+                            });
+                        }).start();
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
+        });
+    }
+
+    private void refreshCacheSize(TextView cacheSizeView) {
+        new Thread(() -> {
+            long size = com.arkashstudio.apphub.util.FileUtil.downloadsDirSize(this);
+            String text = size > 0
+                    ? getString(R.string.cache_size_fmt, com.arkashstudio.apphub.util.FileUtil.formatSize(size))
+                    : getString(R.string.cache_empty);
+            runOnUiThread(() -> cacheSizeView.setText(text));
+        }).start();
     }
 
     // ===== О приложении =====

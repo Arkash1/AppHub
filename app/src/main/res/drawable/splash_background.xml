@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Фон splash screen: тёмный с радиальным фиолетовым свечением.
+     Логотип отрисуется отдельной Activity (SplashActivity) с анимацией. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/bg_base" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="900"
+                android:centerX="0.5"
+                android:centerY="0.4"
+                android:startColor="#557C4DFF"
+                android:endColor="@android:color/transparent" />
+        </shape>
+    </item>
+</layer-list>

@@ -93,15 +93,49 @@
                 android:padding="32dp"
                 android:visibility="gone">
 
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_empty_apps"
+                    android:alpha="0.5"
+                    android:contentDescription="@null" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:text="@string/catalog_empty"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/catalog_empty_hint"
                     android:textColor="@color/text_secondary"
-                    android:textSize="16sp" />
+                    android:textSize="13sp"
+                    android:gravity="center" />
             </LinearLayout>
         </FrameLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <!-- FAB поиска (над FAB настроек) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/catalog_fab_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="88dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="@string/search_title"
+        app:backgroundTint="@color/primary_neon"
+        app:srcCompat="@drawable/ic_search"
+        app:tint="@color/white"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="mini" />
 
     <!-- FAB настроек -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton

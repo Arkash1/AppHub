@@ -36,21 +36,33 @@
         android:theme="@style/Theme.AppHub"
         tools:targetApi="34">
 
-        <!-- Главный экран (каталог) -->
+        <!-- Splash screen — точка входа приложения -->
         <activity
-            android:name=".ui.catalog.CatalogActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
-            android:launchMode="singleTop"
-            android:theme="@style/Theme.AppHub">
+            android:theme="@style/Theme.AppHub.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- Главный экран (каталог) -->
+        <activity
+            android:name=".ui.catalog.CatalogActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppHub" />
+
         <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false"
+            android:theme="@style/Theme.AppHub" />
+
+        <activity
+            android:name=".ui.search.SearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.AppHub" />
 
         <activity

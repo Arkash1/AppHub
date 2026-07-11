@@ -107,6 +107,40 @@ public final class FileUtil {
         return new File(downloadsDir(context), sha256 + ".apk");
     }
 
+    /** Размер каталога загрузок в байтах. */
+    public static long downloadsDirSize(Context context) {
+        return dirSize(downloadsDir(context));
+    }
+
+    /** Рекурсивный подсчёт размера каталога. */
+    private static long dirSize(File dir) {
+        if (dir == null || !dir.exists()) return 0;
+        long size = 0;
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                if (f.isDirectory()) {
+                    size += dirSize(f);
+                } else {
+                    size += f.length();
+                }
+            }
+        }
+        return size;
+    }
+
+    /** Удалить все файлы из каталога загрузок (очистка кэша). */
+    public static void clearDownloadsDir(Context context) {
+        File dir = downloadsDir(context);
+        File[] files = dir.listFiles();
+        if (files != null) {
+            for (File f : files) {
+                //noinspection ResultOfMethodCallIgnored
+                f.delete();
+            }
+        }
+    }
+
     /** Callback прогресса (0..100). */
     public interface ProgressCallback {
         void onProgress(int percent);

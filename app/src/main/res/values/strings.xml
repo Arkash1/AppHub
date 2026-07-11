@@ -12,7 +12,9 @@
 
     <!-- Каталог -->
     <string name="cat_all">Все</string>
+    <string name="cat_mine">Мои</string>
     <string name="catalog_empty">Каталог пуст</string>
+    <string name="catalog_empty_hint">Добавьте приложение через панель администратора,\nзатем загрузите APK — оно появится здесь</string>
     <string name="offline_banner">Сервер недоступен — показан кэш</string>
     <string name="hint_search">Поиск приложений…</string>
 
@@ -33,6 +35,17 @@
     <string name="set_server_url_title">Адрес сервера</string>
     <string name="reset_server_url">Сбросить к адресу по умолчанию</string>
     <string name="check_updates">Проверить обновления каталога</string>
+    <string name="cache_title">Кэш загрузок</string>
+    <string name="cache_size_fmt">Занято: %1$s</string>
+    <string name="clear_cache">Очистить кэш</string>
+    <string name="cache_cleared">Кэш очищен</string>
+    <string name="cache_empty">Кэш пуст</string>
+    <string name="clear_cache_confirm">Удалить все скачанные APK-файлы из кэша?\n(Установленные приложения не пострадают)</string>
+
+    <!-- Уведомления об обновлениях -->
+    <string name="notif_channel_updates">Обновления приложений</string>
+    <string name="notif_channel_updates_desc">Уведомления о доступных обновлениях приложений</string>
+    <string name="notif_updates_title">Доступны обновления</string>
     <string name="checking_updates">Проверка…</string>
     <string name="catalog_version">Версия каталога: </string>
     <string name="server_unavailable">Сервер недоступен</string>
@@ -91,4 +104,21 @@
     <string name="app_created">Приложение создано</string>
     <string name="app_deleted">Приложение удалено</string>
     <string name="version_uploaded">Версия загружена</string>
+
+    <!-- Смена пароля -->
+    <string name="change_password_title">Сменить пароль</string>
+    <string name="old_password">Текущий пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="confirm_password">Повторите новый пароль</string>
+    <string name="err_password_short">Пароль слишком короткий (минимум 4 символа)</string>
+    <string name="err_password_mismatch">Пароли не совпадают</string>
+    <string name="password_changed">Пароль изменён</string>
+    <string name="logged_out">Вы вышли из режима администратора</string>
+    <string name="share_app">Поделиться</string>
+    <string name="share_app_text">Загляни в AppHub: %1$s от %2$s</string>
+
+    <!-- Поиск -->
+    <string name="search_hint">Поиск приложений…</string>
+    <string name="search_title">Поиск</string>
+    <string name="search_no_results">Ничего не найдено</string>
 </resources>

@@ -121,6 +121,49 @@
                     android:text="@string/check_updates" />
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- Очистка кэша загрузок -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.AppHub.CardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cache_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/settings_cache_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:text="@string/cache_empty" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settings_clear_cache"
+                        style="Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/clear_cache"
+                        android:textColor="@color/accent_pink"
+                        app:strokeColor="@color/accent_pink"
+                        app:cornerRadius="22dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <!-- ===== Пасхалка: режим администратора ===== -->
             <FrameLayout
                 android:layout_width="match_parent"

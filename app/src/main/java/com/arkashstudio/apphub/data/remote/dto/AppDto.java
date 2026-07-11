@@ -18,6 +18,7 @@ public class AppDto {
     @SerializedName("iconUrl") public String iconUrl;
     @SerializedName("rating") public double rating;
     @SerializedName("featured") public boolean featured;
+    @SerializedName("downloadsCount") public long downloadsCount;
 
     @SerializedName("latestVersionId") public Long latestVersionId;
     @SerializedName("latestVersionName") public String latestVersionName;
